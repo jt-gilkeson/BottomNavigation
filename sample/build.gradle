@@ -39,6 +39,7 @@ android {
             versionNameSuffix "_" + System.getProperty("user.name", "N/A") + "_Debug"
         }
     }
+    buildToolsVersion '25.0.0'
 }
 
 repositories {
