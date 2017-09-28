@@ -66,10 +66,10 @@ bottomNavigationBar
 
 ### BottomNavigationBar Customizations
 
- | MODE_FIXED | MODE_SHIFTING
------------- | ------------ | -------------
-BACKGROUND_STYLE_STATIC | <img src="https://raw.githubusercontent.com/Ashok-Varma/BottomNavigation/master/fixed_static.gif" width="320" height="50" /> | <img src="https://raw.githubusercontent.com/Ashok-Varma/BottomNavigation/master/shift_static.gif" width="320" height="50" />
-BACKGROUND_STYLE_RIPPLE | <img src="https://raw.githubusercontent.com/Ashok-Varma/BottomNavigation/master/fixed_ripple.gif" width="320" height="50" /> | <img src="https://raw.githubusercontent.com/Ashok-Varma/BottomNavigation/master/shift_ripple.gif" width="320" height="50" />
+|                             | MODE_FIXED | MODE_SHIFTING |
+| --------------------------- | ---------- | ------------- |
+| **BACKGROUND_STYLE_STATIC** | <img src="https://raw.githubusercontent.com/Ashok-Varma/BottomNavigation/master/fixed_static.gif" width="320" height="50" /> | <img src="https://raw.githubusercontent.com/Ashok-Varma/BottomNavigation/master/shift_static.gif" width="320" height="50" /> |
+| **BACKGROUND_STYLE_RIPPLE** | <img src="https://raw.githubusercontent.com/Ashok-Varma/BottomNavigation/master/fixed_ripple.gif" width="320" height="50" /> | <img src="https://raw.githubusercontent.com/Ashok-Varma/BottomNavigation/master/shift_ripple.gif" width="320" height="50" /> |
 
 #### 1. Modes
 Attribute: `bnbMode` Values: `mode_default, mode_fixed, mode_shifting`  
