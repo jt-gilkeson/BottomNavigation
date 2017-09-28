@@ -45,8 +45,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     int lastSelectedPosition = 0;
 
-    boolean hidden = false;
-
     BadgeItem numberBadgeItem;
 
     @Override
@@ -115,12 +113,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v.getId() == R.id.toggle_hide) {
             if (bottomNavigationBar != null) {
-                if (hidden) {
+                if (bottomNavigationBar.isHidden()) {
                     bottomNavigationBar.show();
                 } else {
                     bottomNavigationBar.hide();
                 }
-                hidden = !hidden;
             }
         } else if (v.getId() == R.id.toggle_badge) {
             if (numberBadgeItem != null) {
@@ -239,9 +236,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onTabSelected(int position) {
         lastSelectedPosition = position;
-        setMessageText(position + " Tab Selected");
+        message.setText(position + " Tab Selected");
         if (numberBadgeItem != null) {
-            numberBadgeItem.setText(Integer.toString(position));
+            numberBadgeItem.setText(position + "");
         }
         setScrollableText(position);
     }
@@ -252,11 +249,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onTabReselected(int position) {
-        setMessageText(position + " Tab Reselected");
-    }
-
-    private void setMessageText(String messageText){
-        message.setText(messageText);
+        message.setText(position + " Tab Reselected");
     }
 
     private void setScrollableText(int position) {

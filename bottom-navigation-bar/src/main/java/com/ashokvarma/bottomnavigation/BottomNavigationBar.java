@@ -597,6 +597,12 @@ public class BottomNavigationBar extends FrameLayout {
         setTranslationY(0, animate);
     }
 
+    public boolean isHidden()
+    {
+        float yOffset = getTranslationY();
+        return yOffset > 0;
+    }
+
     /**
      * @param offset  offset needs to be set
      * @param animate is animation enabled for translation
@@ -630,10 +636,6 @@ public class BottomNavigationBar extends FrameLayout {
             mTranslationAnimator.cancel();
         }
         mTranslationAnimator.translationY(offset).start();
-    }
-
-    public boolean isHidden() {
-        return mIsHidden;
     }
 
     ///////////////////////////////////////////////////////////////////////////
