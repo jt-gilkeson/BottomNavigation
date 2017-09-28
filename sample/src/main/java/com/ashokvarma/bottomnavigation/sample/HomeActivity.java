@@ -3,6 +3,8 @@ package com.ashokvarma.bottomnavigation.sample;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,6 +25,8 @@ import io.fabric.sdk.android.Fabric;
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, BottomNavigationBar.OnTabSelectedListener {
 
     BottomNavigationBar bottomNavigationBar;
+
+    FloatingActionButton fabHome;
 
     CheckBox modeFixed;
     CheckBox modeShifting;
@@ -47,9 +51,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
-        setContentView(R.layout.activity_bottom_navigation);
+        setContentView(R.layout.activity_home);
 
         bottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
+        fabHome = (FloatingActionButton) findViewById(R.id.fab_home);
 
         modeFixed = (CheckBox) findViewById(R.id.mode_fixed);
         modeShifting = (CheckBox) findViewById(R.id.mode_shifting);
@@ -77,6 +82,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         toggleHide.setOnClickListener(this);
         toggleBadge.setOnClickListener(this);
+        fabHome.setOnClickListener(this);
 
         bottomNavigationBar.setTabSelectedListener(this);
 
@@ -108,7 +114,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         if (v.getId() == R.id.toggle_hide) {
             if (bottomNavigationBar != null) {
                 if (bottomNavigationBar.isHidden()) {
-                    bottomNavigationBar.unHide();
+                    bottomNavigationBar.show();
                 } else {
                     bottomNavigationBar.hide();
                 }
@@ -117,6 +123,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             if (numberBadgeItem != null) {
                 numberBadgeItem.toggle();
             }
+        } else if (v.getId() == R.id.fab_home){
+            final Snackbar snackbar = Snackbar.make(message, "Fab Clicked", Snackbar.LENGTH_LONG);
+            snackbar.setAction("dismiss", new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    snackbar.dismiss();
+                }
+            });
+            snackbar.show();
         }
     }
 
@@ -163,6 +178,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private void refresh() {
 
         bottomNavigationBar.clearAll();
+//        bottomNavigationBar.setFab(fabHome, BottomNavigationBar.FAB_BEHAVIOUR_TRANSLATE_AND_STICK);
+        bottomNavigationBar.setFab(fabHome);
 
         setScrollableText(lastSelectedPosition);
 
